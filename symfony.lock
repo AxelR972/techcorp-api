@@ -1,4 +1,10 @@
 {
+    "api-platform/symfony": {
+        "version": "4.1",
+        "recipe": {
+            "version": "4.0"
+        }
+    },
     "doctrine/deprecations": {
         "version": "1.1",
         "recipe": {
@@ -34,6 +40,22 @@
             "./config/packages/doctrine_migrations.yaml",
             "./migrations/.gitignore"
         ]
+    },
+    "nelmio/api-doc-bundle": {
+        "version": "5.5",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "3.0",
+            "ref": "c8e0c38e1a280ab9e37587a8fa32b251d5bc1c94"
+        },
+        "files": [
+            "./config/packages/nelmio_api_doc.yaml",
+            "./config/routes/nelmio_api_doc.yaml"
+        ]
+    },
+    "nelmio/cors-bundle": {
+        "version": "2.5.0"
     },
     "phpunit/phpunit": {
         "version": "11.5",
@@ -243,6 +265,12 @@
             "./config/packages/twig.yaml",
             "./templates/base.html.twig"
         ]
+    },
+    "symfony/uid": {
+        "version": "6.4",
+        "recipe": {
+            "version": "6.2"
+        }
     },
     "symfony/ux-turbo": {
         "version": "2.29",
