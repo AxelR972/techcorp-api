@@ -2,21 +2,27 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Routing\Attribute\Route;
 use App\Repository\ToolRepository;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-final class ToolController extends AbstractController
+class ToolController extends AbstractController
 {
-    #[Route('/api/tools', name: 'api_tools_list', methods: ['GET'])]
-    public function list(ToolRepository $repo): JsonResponse
+    #[Route('/api/tools', name: 'api_tools', methods: ['GET'])]
+    public function list(ToolRepository $repo, Request $request): JsonResponse
     {
         $tools = $repo->findAll();
 
-        return $this->json($tools, 200, [], ['groups' => 'tool:read']);
+        return $this->json([
+            'data' => $tools,
+            'total' => count($tools),
+        ]);
     }
 }
+
+
 
   /* public function get(ToolRepository $repo, int $id): JsonResponse
     {
