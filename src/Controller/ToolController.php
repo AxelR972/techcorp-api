@@ -14,7 +14,7 @@ final class ToolController extends AbstractController
     {
         $tools = $repo->findAll();
 
-        return $this->json($tools);
+        return $this->json($tools, 200, [], ['groups' => 'tool:read']);
     }
 }
 

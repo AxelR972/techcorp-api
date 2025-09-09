@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ToolRepository::class)]
 class Tool
@@ -14,6 +15,7 @@ class Tool
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['tool:read'])]
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'tools')]
@@ -21,6 +23,7 @@ class Tool
     private ?Category $category = null;
 
     #[ORM\Column(length: 100)]
+     #[Groups(['tool:read'])]
     private ?string $name = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
@@ -33,9 +36,11 @@ class Tool
     private ?string $websiteUrl = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
+     #[Groups(['tool:read'])]
     private ?string $monthlyCost = null;
 
     #[ORM\Column]
+     #[Groups(['tool:read'])]
     private ?int $activeUsersCount = null;
 
     #[ORM\Column(length: 255)]
